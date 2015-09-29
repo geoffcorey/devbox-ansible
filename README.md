@@ -172,7 +172,7 @@ Install Ansible Galaxy modules
 
 ```bash
 sudo ansible-galaxy install pablocrivella.nvm
-sudo ansible-galaxy install amidos.install-docker
+sudo ansible-galaxy install marcelocorreia.docker-install
 ```
 
 #### Bring up the VM

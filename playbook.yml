@@ -21,4 +21,4 @@
       - { role: dotfiles, sudo: false }
       - { role: golang, sudo: false }
       - pablocrivella.nvm
-      - { role: amidos.install-docker, docker_user: vagrant }
+      - { role: marcelocorreia.docker-install }
