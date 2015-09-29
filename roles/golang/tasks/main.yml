@@ -1,0 +1,59 @@
+---
+#- name: Install go-specific apt packages
+#  sudo: true
+#  apt: name={{ item }} state=latest
+#  with_items:
+#    - vim-gocomplete
+- name: Download Golang binary distribution
+  get_url:
+      url=https://storage.googleapis.com/golang/{{ go_archive_file }}
+      dest={{ document_root }}/{{ go_archive_file }}
+- name: Create ~/opt folder
+  file:
+      path=/home/vagrant/opt
+      state=directory
+- name: Unpack the Go binary distribution
+  unarchive:
+      copy=no
+      src={{ document_root }}/{{ go_archive_file }}
+      dest=/home/vagrant/opt
+      creates=/home/vagrant/opt/go
+- name: Add go path settings in .bashrc_mods
+  lineinfile: dest=/home/vagrant/.bashrc_mods line="{{ item }}" insertafter=EOF
+  with_items:
+    - 'export GOROOT={{ go_root }}'
+    - 'export GOPATH={{ go_path }}'
+    - 'export PATH={{ go_root }}/bin:$PATH'
+    - 'export PATH={{ go_path }}/bin:$PATH'
+- name: Create go code folder
+  file:
+    dest={{ go_path }}/src/github.com
+    state=directory
+    recurse=yes
+    owner=vagrant
+    group=vagrant
+- name: Install some nice go packages
+  command: >
+      go get -u {{ item }}
+  environment:
+      GOPATH: "{{ go_path }}"
+      GOROOT: "{{ go_root }}"
+      PATH: "{{ go_root }}/bin:{{ go_path }}/bin:/usr/bin:/bin"
+  with_items:
+      - github.com/nsf/gocode
+      - bitbucket.org/gotamer/gowatch
+- name: Check out vim-go
+  git:
+    repo=https://github.com/fatih/vim-go.git
+    dest=/home/vagrant/src/vim-go
+    update=yes
+- name: Ensure ~/.vim/bundle exists
+  file:
+    dest=/home/vagrant/.vim/bundle
+    state=directory
+- name: Symlink vim-go to .vim/bundle
+  file:
+    src=/home/vagrant/src/vim-go
+    dest=/home/vagrant/.vim/bundle/vim-go
+    state=link
+# TODO: Add bitbucket.org/gotamer/gowatch for folder watching and running tests!

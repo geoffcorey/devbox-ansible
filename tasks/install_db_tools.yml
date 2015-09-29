@@ -1,0 +1,12 @@
+---
+
+- name: Install db clients from Aptitude
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+  sudo: true
+  apt: name={{ item }} state=installed
+  with_items:
+   - mongodb-client
+   - mysql-client
+   - postgresql-client
+   - redis-tools

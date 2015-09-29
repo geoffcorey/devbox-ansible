@@ -1,0 +1,16 @@
+---
+nvm_env: user
+nvm_version: v0.27.1
+nvm_default_node_version: stable
+
+nvm_node_versions:
+  - stable
+
+nvm_users:
+  - vagrant
+
+nvm_global_packages:
+  - bower
+  - ember-cli
+  - strongloop
+  - eslint

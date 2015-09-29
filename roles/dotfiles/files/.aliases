@@ -1,0 +1,119 @@
+# Unix
+export VISUAL=nvim
+alias tlf= "tail -f"
+alias ln='ln -v'
+alias mkdir='mkdir -p'
+alias l='ls'
+alias ll='ls -al'
+alias lh='ls -Alh'
+alias -g G='| grep'
+alias -g M='| less'
+alias -g L='| wc -l'
+alias -g ONE= "| awk '{ print \$1}'"
+alias e="$EDITOR"
+alias v="$VISUAL"
+alias vi="$VISUAL"
+#
+# Directories
+#
+alias space='ncdu'
+alias space-color='cdu'
+alias ll='ls -l'
+alias la='ls -ltra'
+alias l='ls'
+alias C='clear'
+alias se='sudo vim'
+alias e='vim'
+alias home='cd ~'
+alias ..='cd ..'
+alias ...='cd ...'
+alias ....='cd ....'
+alias .....='cd .....'
+alias k='exit'
+alias te='trash-empty'
+alias tl='trash-list'
+alias del='trash-put'
+alias tr='trash-rm'
+alias lsTrash='ls ~/.local/share/Trash/files/'
+alias cdTrash='cd ~/.local/share/Trash/files/'
+alias lD='ls ~/Downloads'
+alias D='cd ~/Downloads'
+alias vim='nvim'
+#
+# Docker
+#
+alias diclean='docker images | grep '\''<none>'\'' | grep -P '\'' [1234567890abcdef] { 12 } '\'' -o | xargs -L1 docker rmi '
+alias dkillall='docker ps -a | grep -v CONTAINER | awk '\'' { print $1 } '\'' | xargs docker kill '
+alias drmall='docker ps -a | grep -v CONTAINER | awk '\'' { print $1 } '\'' | xargs docker rm '
+#
+#
+#
+alias eshealth="curl 'localhost:9200/_cat/health?v'"
+alias esnodes="curl 'localhost:9200/_cat/nodes?v'"
+alias esindices="curl 'localhost:9200/_cat/indices?v'"
+#
+# GO Lang
+#
+alias setgopath='export GOPATH=`pwd`'
+alias lsgodeps="go list -f '{{join .Deps \"\n\"}}' | xargs go list -f '{{if not .Standard}}{{.ImportPath}}{{end}}' "
+#
+# Network
+#
+alias dumpmongo="sudo tcpdump -nnXSs 0 ' port 27017 '"
+#alias linkstatus="awk ' { split(FILENAME, array, "/"); print array[5] ": " $1 } ' $(find /sys/class/net/*/operstate ! -type d)"
+#alias wifistrength="awk ' NR == 3 { print\ "WiFi Signal Strength=\" \$3 \"00 %\"}''' /proc/net/wireless"
+alias ngrep="sudo ngrep -l -q -d eth0 \"^GET |^POST \" tcp and port 80"
+#
+# Term Scripts
+#
+alias colordump=~/bin/colordump.sh
+#
+# Transmission
+#
+alias IP-update='~/bin/blocklist.sh'
+alias tsm-check='dwb http://localhost:9091/transmission/web'
+alias t='transmission-daemon && transmission-remote-cli'
+alias kT='killall transmission-daemon'
+#
+# Google Calendar
+#
+#alias gcal-week='gcalcli --width 12 calw'
+#alias gcal='gcalcli --width 12 calm'
+#alias gcal-add='gcalcli quick'
+#alias gcal-agenda='gcalcli agenda'
+#
+# Productivity
+#
+alias todo='$EDITOR ~/.todo'
+alias httpserve='python -m SimpleHTTPServer'
+#
+# News and Music
+#
+alias news='newsbeuter'
+alias irc='weechat-curses'
+#
+# TMUX Powerline config
+#
+# for weather location
+# https: //weather.yahoo.com/united-states/north-carolina/raleigh-2478307/
+#
+export TMUX_POWERLINE_SEG_WEATHER_LOCATION="2478307"
+export TMUX_POWERLINE_SEG_WEATHER_UNIT_DEFAULT="f"
+alias tmuxhelp='more ~/.tmux/tmux.help'
+#
+# DuckDuckGo
+#
+function duckduckgo
+{
+	query=`echo $* | sed -f ~/bin/url_escape.sed`
+	lynx 'https://duckduckgo.com/?q='$query
+}
+alias '?'='duckduckgo'
+#
+# Ignore lid switch
+#
+alias ignorelidswitch="systemd-inhibit --what=handle-lid-switch sleep 2592000 &"
+#
+# Include custom aliases#
+#
+[[ -f ~/.aliases.local ]] && source ~/.aliases.local

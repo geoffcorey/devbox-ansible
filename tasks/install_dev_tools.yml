@@ -1,0 +1,34 @@
+---
+
+- name: Add 3rd party repos
+  apt_repository: repo='ppa:neovim-ppa/unstable'
+
+- name: Update repository cache
+  action: apt update_cache=yes
+  sudo: yes
+
+- name: Install dev tools from Aptitude
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+  sudo: true
+  apt: name={{ item }} state=installed
+  with_items:
+   - bash-completion # Not included in the docker image
+   - build-essential
+   - cgdb
+   - cmake
+   - ctags
+   - gdb
+   - git
+   - libssl-dev
+   - jq
+   - make
+   - man-db
+  #- mr
+   - neovim
+  #- vcsh
+
+- name: Python support for neovim
+  pip: name=neovim
+  sudo: true
+

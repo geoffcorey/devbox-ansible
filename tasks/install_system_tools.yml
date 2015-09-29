@@ -1,0 +1,23 @@
+---
+
+- name: Install system tools from Aptitude
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+  sudo: true
+  apt: name={{ item }} state=installed
+  with_items:
+   - curl
+   - dstat
+   - htop
+   - iotop
+   - lynx
+   - man-db
+   - mtr
+   - multitail
+   - ngrep
+   - silversearcher-ag
+   - tmux
+   - tree
+   - vim
+   - wget
+   - zsh

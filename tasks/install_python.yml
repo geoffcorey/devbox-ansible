@@ -1,0 +1,15 @@
+---
+
+- name: Install Python and related stuff
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - python2.7-dev
+    - python3.4-dev
+    - python-setuptools
+    - python3-setuptools
+    - python-pip
+    - python3-pip
+    - python-virtualenv
+  sudo: true

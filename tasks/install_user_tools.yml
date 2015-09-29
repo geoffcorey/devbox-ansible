@@ -1,0 +1,11 @@
+---
+
+- name: Install user tools from Aptitude
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+  sudo: true
+  apt: name={{ item }} state=installed
+  with_items:
+   - taskwarrior
+   - tig
+   - weechat

@@ -1,0 +1,26 @@
+---
+- hosts: all
+  sudo: true
+  vars:
+      home: /home/vagrant
+      document_root: /vagrant
+  vars_files:
+      - vars/nvm.yml
+      - vars/user.yml
+  pre_tasks:
+      - name: Symlink sh to bash rather than dash
+        file: src=/bin/bash dest=/bin/sh state=link force=true
+      - include: tasks/update_system.yml
+      - include: tasks/install_system_tools.yml
+     #- include: tasks/install_postgresql.yml pg_version=9.4
+     #- include: tasks/install_nginx.yml
+      - include: tasks/install_python.yml
+      - include: tasks/install_dev_tools.yml
+     #- include: tasks/install_repos.yml
+  roles:
+     #- { role: neovim, sudo: true}
+      - { role: dotfiles, sudo: false }
+      - { role: golang, sudo: false }
+     #- { role: golang-1.5, sudo: false }
+     #- { role: youcompleteme, sudo: false } # Comment out this to save time!!
+      - pablocrivella.nvm

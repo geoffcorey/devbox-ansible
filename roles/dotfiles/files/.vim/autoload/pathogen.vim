@@ -1,0 +1,1 @@
+/home/vagrant/src/vim-pathogen/autoload/pathogen.vim

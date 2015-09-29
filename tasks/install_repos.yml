@@ -1,0 +1,7 @@
+---
+
+- name: Deploy bin files from Github repository
+  git: repo=https://geoffcorey:{{ github_token }}@github.com/geoffcorey/bin.git dest=~/src/github.com/geoffcorey/
+
+#- name: Deploy pass files from Bitbucket repository
+#  git: repo=https://x-token-auth:{{ bitbucket_token }}@bitbucket.org/geoffcorey/pass.git dest=~/src/bitbucket.org/geoffcorey/
