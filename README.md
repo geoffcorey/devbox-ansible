@@ -68,7 +68,7 @@ Inspired by [DevBox-Golang](http://github.com/samuell/devbox-golang) and heavily
 - libssl-dev
 - jq
 - make
-- mecurial-common
+- mercurial
 - [Tig - text mode interface to git](http://jonas.nitro.dk/tig/)
 
 ### DB Clients

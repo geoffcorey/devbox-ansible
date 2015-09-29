@@ -25,7 +25,7 @@
    - jq
    - make
    - man-db
-   - mecurial-common
+   - mercurial
   #- mr
    - neovim
    - tig
