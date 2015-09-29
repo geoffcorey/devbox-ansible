@@ -101,3 +101,5 @@ external-ip -r
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 [[ -d ~/bin ]] && export PATH=$PATH:~/bin
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
