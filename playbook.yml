@@ -17,11 +17,8 @@
      #- include: tasks/install_nginx.yml
       - include: tasks/install_python.yml
       - include: tasks/install_dev_tools.yml
-     #- include: tasks/install_repos.yml
   roles:
-     #- { role: neovim, sudo: true}
       - { role: dotfiles, sudo: false }
       - { role: golang, sudo: false }
-     #- { role: golang-1.5, sudo: false }
-     #- { role: youcompleteme, sudo: false } # Comment out this to save time!!
       - pablocrivella.nvm
+      - { role: amidos.install-docker, docker_user: {{ user }} }

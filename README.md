@@ -168,6 +168,13 @@ github_username: <github username>
 github_token: <github token>
 ```
 
+Install Ansible Galaxy modules
+
+```bash
+sudo ansible-galaxy install pablocrivella.nvm
+sudo ansible-galaxy install amidos.install-docker
+```
+
 #### Bring up the VM
 
 With docker provider (Expect it to take at least ~8m):

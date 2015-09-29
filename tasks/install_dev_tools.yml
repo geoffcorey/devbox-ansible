@@ -34,11 +34,3 @@
 - name: Python support for neovim
   pip: name=neovim
   sudo: true
-
-- name: Add docker gnupg key
-  sudo: true
-  command: "curl -sSL https://get.docker.com/gpg | sudo apt-key add -"
-
-- name: Install docker
-  sudo: true
-  command:  "curl -sSL https://get.docker.com/ | sh"
