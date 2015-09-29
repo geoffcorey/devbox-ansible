@@ -14,6 +14,7 @@
   apt: name={{ item }} state=installed
   with_items:
    - bash-completion # Not included in the docker image
+   - bzr
    - build-essential
    - cgdb
    - cmake
@@ -24,8 +25,10 @@
    - jq
    - make
    - man-db
+   - mecurial-common
   #- mr
    - neovim
+   - tig
   #- vcsh
 
 - name: Python support for neovim

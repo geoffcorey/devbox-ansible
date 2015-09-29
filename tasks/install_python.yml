@@ -1,6 +1,7 @@
 ---
 
 - name: Install Python and related stuff
+  sudo: true
   environment:
     DEBIAN_FRONTEND: noninteractive
   apt: pkg={{ item }} state=latest
@@ -12,4 +13,3 @@
     - python-pip
     - python3-pip
     - python-virtualenv
-  sudo: true

@@ -1,4 +1,5 @@
 # DevBox-Ansible
+
 *Vagrant box backed by Docker or Virtualbox, with Ansible provisioning*
 
 Inspired by [DevBox-Golang](http://github.com/samuell/devbox-golang) and heavily modified to setup a devbox to my liking.
@@ -6,16 +7,100 @@ Inspired by [DevBox-Golang](http://github.com/samuell/devbox-golang) and heavily
 ## Ingredients
 
 - [Ubuntu 14.04 "trusty" LTS 64bit base image](http://www.ubuntu.com/)
+
+### Golang
+
 - [Go(lang) 1.5.1](http://golang.org/)
-- [Vim](https://github.com/Valloric/YouCompleteMe)
-- [Fatih's vim-go plugin](https://github.com/fatih/vim-go), providing syntax highlight, gocode integration for autocompletion, and more.
-    - See the [vim-go](https://github.com/fatih/vim-go) README for more info on how you can easily enable additional included features.
-- [GoCode Go completion engine](https://github.com/nsf/gocode)
-- [Valloric's YouCompleteMe](https://github.com/Valloric/YouCompleteMe) for as-you-type completion.
-- [Git](http://git-scm.com/)
-- [Tig - text mode interface to git](http://jonas.nitro.dk/tig/)
-- [gdb - the GNU debugger](http://www.gnu.org/software/gdb)
+
+### Node.js
+
+- node.js 4.1.1
+- nvm
+- bower
+- ember-cli
+- stongloop
+- eslint
+
+### Python
+
+- python2.7-dev
+- python3.4-dev
+- python-setuptools
+- python3-setuptools
+- python-pip
+- python3-pip
+- python-virtualenv
+
+### NeoVim
+
+- [NeoVim](https://neovim.com)
+- [bundler](http://github.com/tpope/vim-bundler)
+- [ctags](http://github.com/vim-scripts/ctags.vim)
+- [ctrlp](http://github.com/kien/ctrlp.vim)
+- [emmet](http://github.com/mattn/emmet-vim)
+- [fugitive](http://github.com/tpope/vim-fugitive)
+- [go](http://github.com/fatih/vim-go)
+- [greplace](http://github.com/vim-scripts/greplace.vim)
+- [i3 syntax](http://github.com/PotatoesMaster/i3-vim-syntax)
+- [jade](http://github.com/digitaltoad/vim-jade)
+- [jsbeautify](http://github.com/maksimr/vim-jsbeautify)
+- [markdown](http://github.com/plasticboy/vim-markdown)
+- [nerdtree](http://github.com/scrooloose/nerdtree)
+- [node](http://github.com/moll/vim-node)
+- [surround](http://github.com/tpope/vim-surround)
+- [tabular](http://github.com/godlygeek/tabular)
+- [tagbar](http://github.com/majutsushi/tagbar)
+- [tcomment](http://github.com/vim-scripts/tComment)
+- [tmux navigator](http://github.com/christoomey/vim-tmux-navigator)
+- [tomorrow theme](http://github.com/chriskempson/vim-tomorrow-theme)
+- [words to avoid](http://github.com/nicholaides/words-to-avoid.vim)
+- [YouCompleteMe](http://github.com/Valloric/YouCompleteMe)
+
+### Dev Tools
+
+- build-essential
+- bzr
 - [cgdb - Curses based user interface to gdb](https://cgdb.github.io)
+- cmake
+- ctags
+- [gdb - the GNU debugger](http://www.gnu.org/software/gdb)
+- [Git](http://git-scm.com/)
+- libssl-dev
+- jq
+- make
+- mecurial-common
+- [Tig - text mode interface to git](http://jonas.nitro.dk/tig/)
+
+### DB Clients
+
+- mongodb-client
+- mysql-client
+- postgresql-client
+- redis-tools
+
+### Tools
+
+- curl
+- dstat
+- dnstools
+- htop
+- iotop
+- lynx
+- man-db
+- mtr
+- multitail
+- ngrep
+- silversearcher-ag
+- tmux
+- tree
+- vim
+- wget
+- zsh
+
+### User apps
+
+- taskwarrior
+- weechat
 
 ## Prerequisites
 
@@ -56,6 +141,28 @@ Inspired by [DevBox-Golang](http://github.com/samuell/devbox-golang) and heavily
 ```bash
 git clone git@github.com:geoffcorey/devbox-ansible
 cd devbox-ansible
+```
+#### Create file vars/user.yml
+
+Sorry for asking twice for your github username but I was lazy.  First is a list and can be from
+ multiple accounts to grap the ssh keys from github and add to authorized users.  Second one is
+used by roles/dotfiles/tasks and it pulls another repo I have for personal bin files.  If you
+ clone this repo and want to do your own thing, a good chunk of the customization will be under
+roles/dotfiles.   At some point I want this script to setup my dotfiles as described in my
+ [blog post](http://www.geoffcorey.com/2015/03/managing-dotfiles-across-multiple-platforms/) so
+I can modify my dotfiles and just push them up to my repo.  For now a copy of my dotfiles is
+ located in roles/dotfiles/files.
+
+You can create an access token on
+ [Github Personal Access Token](https://github.com/settings/tokens) page.
+
+```yml
+---
+add_ssh_keys_from_github:
+  usernames:
+    - <github username>
+github_username: <github username>
+github_token: <github token>
 ```
 
 #### Bring up the VM

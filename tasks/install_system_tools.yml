@@ -8,7 +8,7 @@
   with_items:
    - curl
    - dstat
-   - dnstools
+   - dnsutils
    - htop
    - iotop
    - lynx
