@@ -63,13 +63,16 @@ Inspired by [DevBox-Golang](http://github.com/samuell/devbox-golang) and heavily
 - [cgdb - Curses based user interface to gdb](https://cgdb.github.io)
 - cmake
 - ctags
+- [Docker](https://docker.com)
 - [gdb - the GNU debugger](http://www.gnu.org/software/gdb)
 - [Git](http://git-scm.com/)
 - libssl-dev
 - jq
 - make
 - mercurial
+- mr
 - [Tig - text mode interface to git](http://jonas.nitro.dk/tig/)
+- vcsh
 
 ### DB Clients
 

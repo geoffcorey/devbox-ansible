@@ -1,0 +1,38 @@
+---
+- name: Symlink config files in rc folder
+  file: src=/vagrant/roles/dotfiles/files/{{ item }} dest=~/{{ item }} state=link
+  with_items:
+    - .aliases
+    - .bash_aliases
+    - .bashrc_mods
+    - .eslintrc
+    - .gitignore
+    - .nvim
+    - .nvimrc
+    - .tmux.conf
+    - .vimrc
+    - .vim
+    - .zsh
+    - .zshrc
+- name: Install neovim plugins
+  command: nvim +PlugInstall +qall
+
+- name: Deploy bin files from Github repository
+  git: repo=https://{{ github_username }}:{{ github_token }}@github.com/geoffcorey/bin.git dest=~/src/github.com/geoffcorey/
+
+- name: link bin files from Github repository
+  command: ln -s src/github.com/geoffcorey/bin ~/bin
+
+- name: Deploy bin files from Github repository
+  git: repo=https://{{ github_username }}:{{ github_token }}@github.com/olivierverdier/zsh-git-prompt.git dest=~/src/github.com/olivierverdier/zsh-git-prompt
+
+- name: Add rvm gnupg key
+  command: gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+
+- name: Install rvm
+  command:  "curl -sSL https://get.rvm.io | bash"
+
+- name: Switch default shell to zsh
+  sudo: true
+  command: chsh -s /bin/zsh {{ user }}
+
