@@ -13,8 +13,6 @@
         file: src=/bin/bash dest=/bin/sh state=link force=true
       - include: tasks/update_system.yml
       - include: tasks/install_system_tools.yml
-     #- include: tasks/install_postgresql.yml pg_version=9.4
-     #- include: tasks/install_nginx.yml
       - include: tasks/install_python.yml
       - include: tasks/install_dev_tools.yml
   roles:
@@ -22,4 +20,5 @@
       - { role: golang, sudo: false }
       - pablocrivella.nvm
       - { role: marcelocorreia.docker-install }
-      - { role: aeriscloud.rvm }
+      - { role: rvm_io.rvm1-ruby, tags: ruby, sudo: True, rvm1_install_flags: '--auto-dotfiles --user-install',
+rvm1_install_path: '/home/{{ ansible_ssh_user }}/.rvm' }

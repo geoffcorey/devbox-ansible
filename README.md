@@ -6,6 +6,7 @@ Inspired by [DevBox-Golang](http://github.com/samuell/devbox-golang) and heavily
 
 ## Ingredients
 
+- [Ansible 1.9](http://docs.ansible.com/ansible/intro_installation.html)
 - [Ubuntu 14.04 "trusty" LTS 64bit base image](http://www.ubuntu.com/)
 
 ### Golang
@@ -171,9 +172,10 @@ github_token: <github token>
 Install Ansible Galaxy modules
 
 ```bash
-sudo ansible-galaxy install aeriscloud.rvm
 sudo ansible-galaxy install marcelocorreia.docker-install
 sudo ansible-galaxy install pablocrivella.nvm
+sudo ansible-galaxy install RealSalmon.rvm-prerequisites
+sudo ansible-galaxy install RealSalmon.rvm
 ```
 
 #### Bring up the VM
