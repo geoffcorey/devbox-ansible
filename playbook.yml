@@ -22,3 +22,4 @@
       - { role: golang, sudo: false }
       - pablocrivella.nvm
       - { role: marcelocorreia.docker-install }
+      - { role: aeriscloud.rvm }

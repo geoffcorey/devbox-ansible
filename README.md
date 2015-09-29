@@ -171,8 +171,9 @@ github_token: <github token>
 Install Ansible Galaxy modules
 
 ```bash
-sudo ansible-galaxy install pablocrivella.nvm
+sudo ansible-galaxy install aeriscloud.rvm
 sudo ansible-galaxy install marcelocorreia.docker-install
+sudo ansible-galaxy install pablocrivella.nvm
 ```
 
 #### Bring up the VM
