@@ -174,8 +174,7 @@ Install Ansible Galaxy modules
 ```bash
 sudo ansible-galaxy install marcelocorreia.docker-install
 sudo ansible-galaxy install pablocrivella.nvm
-sudo ansible-galaxy install RealSalmon.rvm-prerequisites
-sudo ansible-galaxy install RealSalmon.rvm
+sudo ansible-galaxy install rvm_io.rvm1-ruby
 ```
 
 #### Bring up the VM
