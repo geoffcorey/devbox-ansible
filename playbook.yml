@@ -24,5 +24,5 @@
       - { role: golang, sudo: false }
       - pablocrivella.nvm
       - { role: marcelocorreia.docker-install }
-      - { role: rvm_io.rvm1-ruby, tags: ruby, sudo: True, rvm1_install_flags: '--auto-dotfiles --user-install',
+      - { role: rvm_io.rvm1-ruby, tags: ruby, sudo: false, rvm1_install_flags: '--auto-dotfiles --user-install',
 rvm1_install_path: '/home/{{ ansible_ssh_user }}/.rvm' }

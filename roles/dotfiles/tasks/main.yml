@@ -1,6 +1,6 @@
 ---
 - name: Symlink config files in rc folder
-  file: src={{ document_root }}/roles/dotfiles/files/{{ item }} dest=~/{{ item }} state=link
+  file: src={{ document_root }}/roles/dotfiles/files/{{ item }} dest={{ home }}/{{ item }} state=link
   with_items:
     - .aliases
     - .bash_aliases
@@ -18,13 +18,13 @@
   command: nvim +PlugInstall +qall
 
 - name: Deploy bin files from Github repository
-  git: repo=https://{{ github_username }}:{{ github_token }}@github.com/geoffcorey/bin.git dest=~/src/github.com/geoffcorey/
+  git: repo=https://{{ github_username }}:{{ github_token }}@github.com/geoffcorey/bin.git dest={{ home }}/src/github.com/geoffcorey/
 
 - name: link bin files from Github repository
-  file: src=/home/{{ user }}/src/github.com/geoffcorey/bin dest=/home/{{ user }}/bin state=link
+  file: src={{ home }}/src/github.com/geoffcorey/bin dest={{ home }}/bin state=link
 
 - name: Deploy bin files from Github repository
-  git: repo=https://{{ github_username }}:{{ github_token }}@github.com/olivierverdier/zsh-git-prompt.git dest=~/src/github.com/olivierverdier/zsh-git-prompt
+  git: repo=https://{{ github_username }}:{{ github_token }}@github.com/olivierverdier/zsh-git-prompt.git dest={{ home }}/src/github.com/olivierverdier/zsh-git-prompt
 
 - name: Switch default shell to zsh
   sudo: true
