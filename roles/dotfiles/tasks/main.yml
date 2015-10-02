@@ -1,6 +1,6 @@
 ---
 - name: Symlink config files in rc folder
-  file: src=/vagrant/roles/dotfiles/files/{{ item }} dest=~/{{ item }} state=link
+  file: src={{ document_root }}/roles/dotfiles/files/{{ item }} dest=~/{{ item }} state=link
   with_items:
     - .aliases
     - .bash_aliases

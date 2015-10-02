@@ -179,6 +179,14 @@ sudo ansible-galaxy install rvm_io.rvm1-ruby
 
 #### Bring up the VM
 
+With localhost (Expect it to take at least ~8m):
+
+Edit playbook.yml and set the vars for the user, home and document_root
+
+```bash
+sudo ansible-playbook -i "localhost," -c local playbook.yml
+```
+
 With docker provider (Expect it to take at least ~8m):
 
 ```bash

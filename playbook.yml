@@ -5,6 +5,10 @@
       user: vagrant
       home: /home/vagrant
       document_root: /vagrant
+     #localhost
+     #user: gcorey
+     #home: /home/gcorey
+     #document_root: /home/gcorey/src/github.com/geoffcorey/devbox-ansible
   vars_files:
       - vars/nvm.yml
       - vars/user.yml
