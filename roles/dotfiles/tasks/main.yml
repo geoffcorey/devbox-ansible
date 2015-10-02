@@ -21,7 +21,7 @@
   git: repo=https://{{ github_username }}:{{ github_token }}@github.com/geoffcorey/bin.git dest=~/src/github.com/geoffcorey/
 
 - name: link bin files from Github repository
-  command: ln -s src/github.com/geoffcorey/bin ~/bin
+  file: src=/home/{{ user }}/src/github.com/geoffcorey/bin dest=/home/{{ user }}/bin state=link
 
 - name: Deploy bin files from Github repository
   git: repo=https://{{ github_username }}:{{ github_token }}@github.com/olivierverdier/zsh-git-prompt.git dest=~/src/github.com/olivierverdier/zsh-git-prompt
